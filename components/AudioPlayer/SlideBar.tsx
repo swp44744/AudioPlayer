@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Slider from "@react-native-community/slider";
 import TrackPlayer, { useProgress } from "react-native-track-player";
+import { ThemedText } from "../ThemedText";
 
 const SlideBar = () => {
   const { duration, position } = useProgress();
@@ -23,7 +24,7 @@ const SlideBar = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.timeText}>{formatTime(isSliding ? sliderValue : position)}</Text>
+      <ThemedText style={styles.timeText}>{formatTime(isSliding ? sliderValue : position)}</ThemedText>
       <Slider
         style={styles.slider}
         minimumValue={0}
@@ -36,7 +37,7 @@ const SlideBar = () => {
         maximumTrackTintColor="#ccc"
         thumbTintColor="#1DB954"
       />
-      <Text style={styles.timeText}>{formatTime(duration)}</Text>
+      <ThemedText style={styles.timeText}>{formatTime(duration)}</ThemedText>
       </View>
   )
 };
@@ -59,7 +60,6 @@ const formatTime = (seconds: number) => {
     },
     timeText: {
       fontSize: 14,
-      color: "#fff",
     },
   });
   

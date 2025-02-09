@@ -29,10 +29,7 @@ export function useAudioPlayer() {
 
     const setActiveTrack = async ()  => {
         const track = await TrackPlayer.getActiveTrack()
-        
         const activeTrack = dummyTracks.find(t => t.title === track?.title);
-        console.log('trackkkkk? ',track?.title, activeTrack?.title);
-
          if(activeTrack)  setCurrentTrack(activeTrack)
     }
 

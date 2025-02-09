@@ -9,7 +9,12 @@ const PromoCard = () => {
   const buttonColor = useThemeColor({}, "headerBackButton");
 
   return (
-    <LinearGradient colors={["#b71035", "#ff0000", "#C11C84"]} start={{ x: 0.5, y: 0 }} end={{ x: 0.5, y: 1 }} style={styles.card}>
+    <LinearGradient
+      colors={["#b71035", "#ff0000", "#C11C84"]}
+      start={{ x: 0.5, y: 0 }}
+      end={{ x: 0.5, y: 1 }}
+      style={styles.card}
+    >
       <ThemedText style={styles.title}>Limited time only.</ThemedText>
       <ThemedText style={styles.title}>6 Months for $2.99.</ThemedText>
 
@@ -18,7 +23,9 @@ const PromoCard = () => {
       </View>
 
       <ThemedText style={styles.acceptText}>Accept Now</ThemedText>
-      <ThemedText style={styles.description}>6 Months for $2.99, then $10.99/month</ThemedText>
+      <ThemedText style={styles.description}>
+        6 Months for $2.99, then $10.99/month
+      </ThemedText>
     </LinearGradient>
   );
 };

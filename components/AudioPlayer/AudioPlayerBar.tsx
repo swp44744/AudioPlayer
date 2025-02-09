@@ -21,8 +21,6 @@ const AudioPlayerBar = () => {
     useAudioPlayer();
   const backgroundColor = useThemeColor({}, "background");
 
-  console.log('CURRENT TRACK: ', currentTrack.title);
-  
   return (
     <View style={[styles.player, { backgroundColor }]}>
       <Image style={styles.image} source={MusicImage} contentFit="contain" />
