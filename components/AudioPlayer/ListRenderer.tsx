@@ -21,6 +21,7 @@ const ListRenderer = ({tracks}: RendererProps) => {
       )}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.trackList}
+      showsVerticalScrollIndicator={false}
     />
   );
 };

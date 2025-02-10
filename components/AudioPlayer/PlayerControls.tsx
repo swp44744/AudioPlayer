@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import PlayerButton from "@/components/AudioPlayer/PlayerButton";
 import JumpButton from "@/components/AudioPlayer/JumpButton";
@@ -14,14 +14,13 @@ const PlayerControls = () => {
     skipToNext,
     skipToPrevious,
     seekTo,
-    currentTrack,
   } = useAudioPlayer();
 
   const backgroundColor = useThemeColor({}, "background");
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
-      <TrackInfo currentTrack={currentTrack} />
+      <TrackInfo />
       <View style={styles.playerControls}>
         <PlayerButton name="play-skip-back" onPress={skipToPrevious} />
         <JumpButton
