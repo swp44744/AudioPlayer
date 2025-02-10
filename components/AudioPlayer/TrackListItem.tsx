@@ -18,7 +18,11 @@ const TrackListItem = ({ item, onPress }: TrackItemProps) => {
   return (
     <View style={styles.listContainer}>
       <Pressable style={styles.trackItem} onPress={onPress}>
-        <FastImage style={styles.image} source={MusicImage} resizeMode="contain" />
+        <FastImage
+          style={styles.image}
+          source={MusicImage}
+          resizeMode="contain"
+        />
         <View style={styles.trackInfo}>
           <ThemedText>{item.title}</ThemedText>
           <ThemedText style={styles.artistText}>{item.artist}</ThemedText>
