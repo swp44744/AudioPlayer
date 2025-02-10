@@ -5,6 +5,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
+const strings = {
+  title: "Limited time only.",
+  subtitle: "6 Months for $2.99.",
+  footer: "Accept Now",
+  subfooter: "6 Months for $2.99, then $10.99/month",
+};
 const PromoCard = () => {
   const buttonColor = useThemeColor({}, "headerBackButton");
 
@@ -15,17 +21,15 @@ const PromoCard = () => {
       end={{ x: 0.5, y: 1 }}
       style={styles.card}
     >
-      <ThemedText style={styles.title}>Limited time only.</ThemedText>
-      <ThemedText style={styles.title}>6 Months for $2.99.</ThemedText>
+      <ThemedText style={styles.title}>{strings.title}</ThemedText>
+      <ThemedText style={styles.title}>{strings.subtitle}</ThemedText>
 
       <View style={styles.iconContainer}>
         <Ionicons name="musical-notes" size={200} color={buttonColor} />
       </View>
 
-      <ThemedText style={styles.acceptText}>Accept Now</ThemedText>
-      <ThemedText style={styles.description}>
-        6 Months for $2.99, then $10.99/month
-      </ThemedText>
+      <ThemedText style={styles.acceptText}>{strings.footer}</ThemedText>
+      <ThemedText style={styles.description}>{strings.subfooter}</ThemedText>
     </LinearGradient>
   );
 };

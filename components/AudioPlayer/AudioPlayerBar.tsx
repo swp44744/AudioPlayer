@@ -1,37 +1,38 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Image } from "expo-image";
 import { ThemedText } from "@/components/ThemedText";
 import PlayerButton from "@/components/AudioPlayer/PlayerButton";
 import MusicImage from "@/assets/images/music.png";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import { useThemeColor } from "@/hooks/useThemeColor";
-
-type AudioPlayerBarProps = {
-  backgroundColor: string;
-  state: string;
-  currentTrack: { title: string } | null;
-  skipToNext: () => void;
-  skipToPrevious: () => void;
-  togglePlayback: () => void;
-};
+import FastImage from "react-native-fast-image";
 
 const AudioPlayerBar = () => {
-  const { state, togglePlayback, skipToNext, skipToPrevious, currentTrack } =
-    useAudioPlayer();
+  const {
+    playbackState,
+    togglePlayback,
+    skipToNext,
+    skipToPrevious,
+    currentTrack,
+  } = useAudioPlayer();
+
   const backgroundColor = useThemeColor({}, "background");
 
   return (
     <View style={[styles.player, { backgroundColor }]}>
-      <Image style={styles.image} source={MusicImage} contentFit="contain" />
+      <FastImage
+        style={styles.image}
+        source={MusicImage}
+        resizeMode="contain"
+      />
       <ThemedText numberOfLines={1} style={{ flex: 1 }}>
-        {state === "playing"
+        {playbackState === "playing"
           ? currentTrack?.title || "Unknown Track"
           : "Not Playing"}
       </ThemedText>
       <PlayerButton name="play-skip-back" onPress={skipToPrevious} size={30} />
       <PlayerButton
-        name={state === "playing" ? "pause" : "play"}
+        name={playbackState === "playing" ? "pause" : "play"}
         onPress={togglePlayback}
         size={40}
       />

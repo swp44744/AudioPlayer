@@ -1,20 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import { View, StyleSheet } from "react-native";
 import PlayerButton from "@/components/AudioPlayer/PlayerButton";
 import JumpButton from "@/components/AudioPlayer/JumpButton";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
-import TrackInfo from "./TrackInfo";
+import TrackInfo, { TrackDetailsProps } from "./TrackInfo";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import SlideBar from "./SlideBar";
+import { useAudioPlayerContext } from "@/context/AudioPlayerContext";
 
-const PlayerControls = () => {
-  const { state, togglePlayback, skipToNext, skipToPrevious, seekTo } =
+const PlayerControls: FC<TrackDetailsProps> = () => {
+  const { playbackState, togglePlayback, skipToNext, skipToPrevious, seekTo, currentTrack } =
     useAudioPlayer();
+
   const backgroundColor = useThemeColor({}, "background");
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
-      <TrackInfo />
+      <TrackInfo currentTrack={currentTrack} />
       <View style={styles.playerControls}>
         <PlayerButton name="play-skip-back" onPress={skipToPrevious} />
         <JumpButton
@@ -23,7 +25,7 @@ const PlayerControls = () => {
           size={25}
         />
         <PlayerButton
-          name={state === "playing" ? "pause" : "play"}
+          name={playbackState === "playing" ? "pause" : "play"}
           onPress={togglePlayback}
           size={50}
         />
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginHorizontal: 8,
     borderRadius: 20,
-    gap: 16
+    gap: 16,
   },
 });
 

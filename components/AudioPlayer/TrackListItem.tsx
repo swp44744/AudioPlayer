@@ -2,12 +2,13 @@ import React from "react";
 import { View, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
-import { Image } from "expo-image";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import MusicImage from "@/assets/images/music.png";
+import FastImage from "react-native-fast-image";
+import { Track } from "@/types/audioPlayer/track";
 
 type TrackItemProps = {
-  item: any;
+  item: Track;
   onPress: () => void;
 };
 
@@ -17,7 +18,7 @@ const TrackListItem = ({ item, onPress }: TrackItemProps) => {
   return (
     <View style={styles.listContainer}>
       <Pressable style={styles.trackItem} onPress={onPress}>
-        <Image style={styles.image} source={MusicImage} contentFit="contain" />
+        <FastImage style={styles.image} source={MusicImage} resizeMode="contain" />
         <View style={styles.trackInfo}>
           <ThemedText>{item.title}</ThemedText>
           <ThemedText style={styles.artistText}>{item.artist}</ThemedText>

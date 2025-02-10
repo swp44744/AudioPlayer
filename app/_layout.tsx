@@ -1,9 +1,12 @@
-import { useSetupAudioPlayerService } from "@/hooks/useSetupAudioPlayerService"
-import { Slot } from "expo-router"
+import { AudioPlayerProvider } from "@/context/AudioPlayerContext";
+import { useSetupAudioPlayerService } from "@/hooks/useSetupAudioPlayerService";
+import { Slot } from "expo-router";
 
 export default () => {
-    useSetupAudioPlayerService()
-    return (
-        <Slot />
-    )
-}
+  useSetupAudioPlayerService();
+  return (
+    <AudioPlayerProvider>
+      <Slot />
+    </AudioPlayerProvider>
+  );
+};

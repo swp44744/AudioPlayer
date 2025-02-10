@@ -7,16 +7,12 @@ import TrackListItem from "@/components/AudioPlayer/TrackListItem";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const AudioPlayer = () => {
-  const {
-    dummyTracks,
-    changeTrack,
-  } = useAudioPlayer();
+  const { changeTrack, currentTrack, dummyTracks } = useAudioPlayer();
 
   return (
     <SafeAreaView style={styles.container} edges={["bottom"]}>
       <Header />
 
-      {/* Track List */}
       <FlatList
         data={dummyTracks}
         renderItem={({ item }) => (
@@ -26,8 +22,7 @@ const AudioPlayer = () => {
         contentContainerStyle={styles.trackList}
       />
 
-      {/* Track Details */}
-      <PlayerControls/>
+      <PlayerControls currentTrack={currentTrack} />
     </SafeAreaView>
   );
 };
@@ -36,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "space-between",
-    gap: 16
+    gap: 16,
   },
   trackList: {
     padding: 16,
