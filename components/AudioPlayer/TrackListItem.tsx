@@ -25,6 +25,7 @@ const TrackListItem = ({ item, onPress, isPlaying }: TrackItemProps) => {
   const { handleFavorits } = useAudioPlayer();
   const { title, artist, favorit } = item;
   const animation = useSharedValue(0);
+  const backgroundColor = useThemeColor({}, "trackHighlight");
 
   const animatedStyle = useAnimatedStyle(() => {
     const scale = interpolate(animation.value, [0, 1], [1, 1.5]);
@@ -41,7 +42,12 @@ const TrackListItem = ({ item, onPress, isPlaying }: TrackItemProps) => {
   };
 
   return (
-    <View style={[styles.listContainer, isPlaying && styles.activeTrack]}>
+    <View
+      style={[
+        styles.listContainer,
+        isPlaying && { backgroundColor, borderRadius: 10 },
+      ]}
+    >
       <Pressable style={styles.trackItem} onPress={onPress}>
         <FastImage
           style={styles.image}
@@ -89,10 +95,6 @@ const styles = StyleSheet.create({
   image: {
     height: 40,
     width: 40,
-  },
-  activeTrack: {
-    backgroundColor: "#2a2a2a",
-    borderRadius: 10,
   },
 });
 
