@@ -6,11 +6,16 @@ import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import TrackInfo, { TrackDetailsProps } from "./TrackInfo";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import SlideBar from "./SlideBar";
-import { useAudioPlayerContext } from "@/context/AudioPlayerContext";
 
 const PlayerControls: FC<TrackDetailsProps> = () => {
-  const { playbackState, togglePlayback, skipToNext, skipToPrevious, seekTo, currentTrack } =
-    useAudioPlayer();
+  const {
+    playbackState,
+    togglePlayback,
+    skipToNext,
+    skipToPrevious,
+    seekTo,
+    currentTrack,
+  } = useAudioPlayer();
 
   const backgroundColor = useThemeColor({}, "background");
 
