@@ -10,13 +10,16 @@ import { Track } from "@/types/audioPlayer/track";
 type TrackItemProps = {
   item: Track;
   onPress: () => void;
+  isPlaying: boolean
 };
 
-const TrackListItem = ({ item, onPress }: TrackItemProps) => {
+const TrackListItem = ({ item, onPress, isPlaying }: TrackItemProps) => {
   const iconColor = useThemeColor({}, "headerBackButton");
 
+
+
   return (
-    <View style={styles.listContainer}>
+    <View style={[styles.listContainer, isPlaying && styles.activeTrack]}>
       <Pressable style={styles.trackItem} onPress={onPress}>
         <FastImage
           style={styles.image}
@@ -57,6 +60,10 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
   },
+  activeTrack: {
+    backgroundColor: "#2a2a2a",
+    borderRadius: 10
+  }
 });
 
 export default TrackListItem;

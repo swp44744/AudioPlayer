@@ -16,7 +16,7 @@ const AudioPlayer = () => {
       <FlatList
         data={dummyTracks}
         renderItem={({ item }) => (
-          <TrackListItem item={item} onPress={() => changeTrack(item.id)} />
+          <TrackListItem item={item} onPress={() => changeTrack(item.id)} isPlaying={currentTrack.title === item.title}/>
         )}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.trackList}
