@@ -3,11 +3,15 @@ import { View, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const HomeHeader = () => {
+type HeaderProps = {
+  title: string,
+  action: string
+}
+const HomeHeader = ({title, action}: HeaderProps) => {
   return (
     <View style={styles.headerContainer}>
-      <ThemedText style={styles.header}>Home</ThemedText>
-      <FontAwesome5 name="user-circle" color="red" size={25} />
+      <ThemedText style={styles.header}>{title}</ThemedText>
+      <FontAwesome5 name={action} color="red" size={25} />
     </View>
   );
 };

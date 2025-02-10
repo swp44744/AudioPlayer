@@ -1,14 +1,9 @@
-import React, { FC } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
-import { Track } from "@/types/audioPlayer/track";
 
-export type TrackDetailsProps = {
-  currentTrack: Track;
-};
-
-const TrackInfo: FC<TrackDetailsProps> = () => {
+const TrackInfo = () => {
   const { currentTrack } = useAudioPlayer();
 
   return (

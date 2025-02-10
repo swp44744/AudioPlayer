@@ -4,15 +4,13 @@ import React, {
   useState,
   useEffect,
   FC,
-  useRef,
 } from "react";
 import TrackPlayer, {
   State,
   usePlaybackState,
 } from "react-native-track-player";
 import { dummyTracks } from "@/data/dummyTracks";
-import { Favorits, Track } from "@/types/audioPlayer/track";
-import { withTiming } from "react-native-reanimated";
+import { Track } from "@/types/audioPlayer/track";
 
 interface AudioPlayerContextProps {
   currentTrack: Track;
@@ -42,7 +40,6 @@ export const AudioPlayerProvider: FC<{ children: React.ReactNode }> = ({
       prevTracks.map((t) =>
         track.id === t.id ? { ...t, favorit: !t.favorit } : t
       ))
-    
   };
 
   const updateActiveTrack = async () => {

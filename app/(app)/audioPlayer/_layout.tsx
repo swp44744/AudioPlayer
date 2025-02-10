@@ -1,31 +1,18 @@
-import React, { useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet } from "react-native";
 import Header from "@/components/Header/Header";
-import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import PlayerControls from "@/components/AudioPlayer/PlayerControls";
-import TrackListItem from "@/components/AudioPlayer/TrackListItem";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ListRenderer from "@/components/AudioPlayer/ListRenderer";
+import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 
 const AudioPlayer = () => {
-  const { changeTrack, currentTrack, dummyTracks } = useAudioPlayer();
-
+  const { dummyTracks } = useAudioPlayer();
   return (
     <SafeAreaView style={styles.container} edges={["bottom", "top"]}>
       <Header />
-      <FlatList
-        data={dummyTracks}
-        renderItem={({ item }) => (
-          <TrackListItem
-            item={item}
-            onPress={() => changeTrack(item.id)}
-            isPlaying={currentTrack.title === item.title}
-          />
-        )}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.trackList}
-      />
-
-      <PlayerControls currentTrack={currentTrack} />
+      <ListRenderer tracks={dummyTracks} />
+      <PlayerControls />
     </SafeAreaView>
   );
 };

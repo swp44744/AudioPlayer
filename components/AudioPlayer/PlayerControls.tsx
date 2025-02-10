@@ -3,11 +3,11 @@ import { View, StyleSheet } from "react-native";
 import PlayerButton from "@/components/AudioPlayer/PlayerButton";
 import JumpButton from "@/components/AudioPlayer/JumpButton";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
-import TrackInfo, { TrackDetailsProps } from "./TrackInfo";
+import TrackInfo from "./TrackInfo";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import SlideBar from "./SlideBar";
 
-const PlayerControls: FC<TrackDetailsProps> = () => {
+const PlayerControls = () => {
   const {
     playbackState,
     togglePlayback,
