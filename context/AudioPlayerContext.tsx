@@ -4,13 +4,15 @@ import React, {
   useState,
   useEffect,
   FC,
+  useRef,
 } from "react";
 import TrackPlayer, {
   State,
   usePlaybackState,
 } from "react-native-track-player";
 import { dummyTracks } from "@/data/dummyTracks";
-import { Track } from "@/types/audioPlayer/track";
+import { Favorits, Track } from "@/types/audioPlayer/track";
+import { withTiming } from "react-native-reanimated";
 
 interface AudioPlayerContextProps {
   currentTrack: Track;
@@ -21,6 +23,7 @@ interface AudioPlayerContextProps {
   changeTrack: (trackId: string) => Promise<void>;
   playbackState: State | undefined;
   dummyTracks: Track[];
+  handleFavorits: (track: Track) => void;
 }
 
 const AudioPlayerContext = createContext<AudioPlayerContextProps>(
@@ -32,16 +35,21 @@ export const AudioPlayerProvider: FC<{ children: React.ReactNode }> = ({
 }) => {
   const { state: playbackState } = usePlaybackState();
   const [currentTrack, setCurrentTrack] = useState<Track>(dummyTracks[0]);
+  const [tracks, setTracks] = useState(dummyTracks);
+
+  const handleFavorits = (track: Track) => {
+    setTracks((prevTracks) =>
+      prevTracks.map((t) =>
+        track.id === t.id ? { ...t, favorit: !t.favorit } : t
+      ))
+    
+  };
 
   const updateActiveTrack = async () => {
     const track = await TrackPlayer.getActiveTrack();
     const activeTrack = dummyTracks.find((t) => t.title === track?.title);
     if (activeTrack) setCurrentTrack(activeTrack);
   };
-
-  useEffect(() => {
-    updateActiveTrack();
-  }, []);
 
   const togglePlayback = async () => {
     const currentState = await TrackPlayer.getState();
@@ -88,6 +96,10 @@ export const AudioPlayerProvider: FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  useEffect(() => {
+    updateActiveTrack();
+  }, []);
+
   return (
     <AudioPlayerContext.Provider
       value={{
@@ -98,7 +110,8 @@ export const AudioPlayerProvider: FC<{ children: React.ReactNode }> = ({
         seekTo,
         changeTrack,
         playbackState,
-        dummyTracks,
+        dummyTracks: tracks,
+        handleFavorits,
       }}
     >
       {children}

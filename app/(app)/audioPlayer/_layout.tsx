@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import Header from "@/components/Header/Header";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
@@ -10,15 +10,18 @@ const AudioPlayer = () => {
   const { changeTrack, currentTrack, dummyTracks } = useAudioPlayer();
 
   return (
-    <SafeAreaView style={styles.container} edges={["bottom"]}>
+    <SafeAreaView style={styles.container} edges={["bottom", "top"]}>
       <Header />
-
       <FlatList
         data={dummyTracks}
         renderItem={({ item }) => (
-          <TrackListItem item={item} onPress={() => changeTrack(item.id)} isPlaying={currentTrack.title === item.title}/>
+          <TrackListItem
+            item={item}
+            onPress={() => changeTrack(item.id)}
+            isPlaying={currentTrack.title === item.title}
+          />
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         contentContainerStyle={styles.trackList}
       />
 

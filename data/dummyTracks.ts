@@ -6,6 +6,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?nature",
     duration: 240,
+    favorit: false
   },
   {
     id: "2",
@@ -14,6 +15,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?mountain",
     duration: 310,
+    favorit: false
   },
   {
     id: "3",
@@ -22,6 +24,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?sky",
     duration: 280,
+    favorit: false
   },
   {
     id: "4",
@@ -30,6 +33,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?sea",
     duration: 320,
+    favorit: false
   },
   {
     id: "5",
@@ -38,6 +42,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?beach",
     duration: 300,
+    favorit: false
   },
   {
     id: "6",
@@ -46,6 +51,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?forest",
     duration: 270,
+    favorit: false
   },
   {
     id: "7",
@@ -54,6 +60,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?ocean",
     duration: 330,
+    favorit: false
   },
   {
     id: "8",
@@ -62,6 +69,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?stars",
     duration: 320,
+    favorit: false
   },
   {
     id: "9",
@@ -70,6 +78,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?desert",
     duration: 310,
+    favorit: false
   },
   {
     id: "10",
@@ -78,6 +87,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?night",
     duration: 305,
+    favorit: false
   },
   {
     id: "11",
@@ -86,6 +96,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?sunrise",
     duration: 290,
+    favorit: false
   },
   {
     id: "12",
@@ -94,6 +105,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?clouds",
     duration: 280,
+    favorit: false
   },
   {
     id: "13",
@@ -102,6 +114,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?city",
     duration: 295,
+    favorit: false
   },
   {
     id: "14",
@@ -110,6 +123,7 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?sunset",
     duration: 300,
+    favorit: false
   },
   {
     id: "15",
@@ -118,5 +132,6 @@ export const dummyTracks = [
     artist: "SoundHelix",
     artwork: "https://source.unsplash.com/200x200/?forest",
     duration: 310,
+    favorit: false
   },
 ];

@@ -6,17 +6,39 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 import MusicImage from "@/assets/images/music.png";
 import FastImage from "react-native-fast-image";
 import { Track } from "@/types/audioPlayer/track";
+import { useAudioPlayer } from "@/hooks/useAudioPlayer";
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 
 type TrackItemProps = {
   item: Track;
   onPress: () => void;
-  isPlaying: boolean
+  isPlaying: boolean;
 };
 
 const TrackListItem = ({ item, onPress, isPlaying }: TrackItemProps) => {
   const iconColor = useThemeColor({}, "headerBackButton");
+  const { handleFavorits } = useAudioPlayer();
+  const { title, artist, favorit } = item;
+  const animation = useSharedValue(0);
 
+  const animatedStyle = useAnimatedStyle(() => {
+    const scale = interpolate(animation.value, [0, 1], [1, 1.5]);
+    return {
+      transform: [{ scale }],
+    };
+  });
 
+  const handleFavoritePress = () => {
+    animation.value = 1;
+    animation.value = withSpring(0, { damping: 5 });
+
+    handleFavorits(item);
+  };
 
   return (
     <View style={[styles.listContainer, isPlaying && styles.activeTrack]}>
@@ -27,11 +49,19 @@ const TrackListItem = ({ item, onPress, isPlaying }: TrackItemProps) => {
           resizeMode="contain"
         />
         <View style={styles.trackInfo}>
-          <ThemedText>{item.title}</ThemedText>
-          <ThemedText style={styles.artistText}>{item.artist}</ThemedText>
+          <ThemedText>{title}</ThemedText>
+          <ThemedText style={styles.artistText}>{artist}</ThemedText>
         </View>
       </Pressable>
-      <Ionicons name="list-outline" size={30} color={iconColor} />
+      <Pressable onPress={handleFavoritePress}>
+        <Animated.View style={animatedStyle}>
+          <Ionicons
+            name={favorit ? "heart" : "heart-outline"}
+            size={30}
+            color={favorit ? "red" : iconColor}
+          />
+        </Animated.View>
+      </Pressable>
     </View>
   );
 };
@@ -62,8 +92,8 @@ const styles = StyleSheet.create({
   },
   activeTrack: {
     backgroundColor: "#2a2a2a",
-    borderRadius: 10
-  }
+    borderRadius: 10,
+  },
 });
 
 export default TrackListItem;

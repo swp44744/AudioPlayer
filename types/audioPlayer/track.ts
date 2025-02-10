@@ -5,4 +5,10 @@ export interface Track {
     artist: string;
     artwork: string;
     duration: number;
+    favorit: boolean
   }
+
+  export type Favorits = {
+    id: string;
+    isFavorit: boolean;
+  };
