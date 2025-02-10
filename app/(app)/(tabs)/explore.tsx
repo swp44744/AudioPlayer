@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function TabTwoScreen() {
   return (
     <SafeAreaView style={styles.container} edges={["bottom", "top"]}>
-      <ThemedText>Setting screen coming soon...</ThemedText>
+      <ThemedText>Favorits screen coming soon...</ThemedText>
     </SafeAreaView>
   );
 }
